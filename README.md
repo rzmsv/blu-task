@@ -2,7 +2,7 @@
 
 ## Description
 
-An App for Blu Bank's Task
+App for Blu Bank's Task
 
 ## Installation
 
