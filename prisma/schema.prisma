@@ -14,11 +14,40 @@ datasource db {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
-  password String
-  fullName String?
-  role     UserType @default(ADMIN)
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  password  String
+  fullName  String?
+  role      UserType   @default(USER)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now()) @updatedAt
+  Book      Book[]
+  Purchase  Purchase[]
+}
+
+model Book {
+  id             Int        @id @default(autoincrement())
+  title          String
+  author         String
+  published_year Int
+  genre          String
+  quantity       Int        @default(0)
+  userId         Int
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @default(now()) @updatedAt
+  user           User       @relation(fields: [userId], references: [id])
+  Purchase       Purchase[]
+}
+
+model Purchase {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  bookId    Int
+  is_paid   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  book      Book     @relation(fields: [bookId], references: [id])
 }
 
 enum UserType {

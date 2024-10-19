@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from "class-validator"
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator"
 
 export class NewBookDTO {
   @IsNotEmpty()
@@ -20,4 +20,8 @@ export class NewBookDTO {
   @IsNotEmpty()
   @IsNumber()
   quantity: number
+
+  @IsOptional()
+  @IsNumber()
+  userId: number
 }

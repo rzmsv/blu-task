@@ -1,0 +1,331 @@
+{
+	"info": {
+		"_postman_id": "19c9df36-e082-4c40-894e-1b3e0e90d8fa",
+		"name": "blu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24058799"
+	},
+	"item": [
+		{
+			"name": "add new user",
+			"item": [
+				{
+					"name": "new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"reza@gmail.com\",\r\n    \"password\": \"reza\",\r\n    \"fullName\": \"reza mousavi\",\r\n    \"role\": \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/new",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"new"
+							]
+						},
+						"description": "{  \n\"email\": STRING,  \n\"password\": STRING,  \n\"fullName\":STRING,  \n\"role\": \"USER\" | \"ADMIN\"  \n}"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"reza@gmail.com\",\r\n    \"password\": \"reza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "{  \n\"email\": STRING,  \n\"password\": STRING  \n}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "book",
+			"item": [
+				{
+					"name": "list of books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlemFAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwidXNlcklkIjo2LCJpYXQiOjE3MjkzMDQzMDZ9.4GsUzZTwh83Mlya9GYyzHYQlLd3Zwfut9QBAJ_qfIcE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/book/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlemFAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwidXNlcklkIjo2LCJpYXQiOjE3MjkzMDQzMDZ9.4GsUzZTwh83Mlya9GYyzHYQlLd3Zwfut9QBAJ_qfIcE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/book/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update book by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlemFAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwidXNlcklkIjo2LCJpYXQiOjE3MjkzMDQzMDZ9.4GsUzZTwh83Mlya9GYyzHYQlLd3Zwfut9QBAJ_qfIcE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"ewqwqe\",\r\n    \"author\": \"reza\",\r\n    \"published_year\": 1989,\r\n    \"genre\": \"!\",\r\n    \"quantity\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/book/update/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "{  \n\"title\":STRING  \n\"author\": STRING,  \n\"published_year\": NUMBER,  \n\"genre\": STRING,  \n\"quantity\": NUMBER  \n}"
+					},
+					"response": []
+				},
+				{
+					"name": "create new book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlemFAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwidXNlcklkIjo2LCJpYXQiOjE3MjkzMDQzMDZ9.4GsUzZTwh83Mlya9GYyzHYQlLd3Zwfut9QBAJ_qfIcE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"ewqwqe\",\r\n    \"author\": \"reza\",\r\n    \"published_year\": 1989,\r\n    \"genre\": \"!\",\r\n    \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/book/new",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book",
+								"new"
+							]
+						},
+						"description": "{  \n\"title\":STRING  \n\"author\": STRING,  \n\"published_year\": NUMBER,  \n\"genre\": STRING,  \n\"quantity\": NUMBER  \n}"
+					},
+					"response": []
+				},
+				{
+					"name": "delete book by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlemFAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwidXNlcklkIjo2LCJpYXQiOjE3MjkzMDQzMDZ9.4GsUzZTwh83Mlya9GYyzHYQlLd3Zwfut9QBAJ_qfIcE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/book/delete/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Add to card",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlemFAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwidXNlcklkIjo2LCJpYXQiOjE3MjkzMDQzMDZ9.4GsUzZTwh83Mlya9GYyzHYQlLd3Zwfut9QBAJ_qfIcE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/purchase/add-to-card/:bookId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"purchase",
+								"add-to-card",
+								":bookId"
+							],
+							"variable": [
+								{
+									"key": "bookId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlemFAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwidXNlcklkIjo2LCJpYXQiOjE3MjkzMDQzMDZ9.4GsUzZTwh83Mlya9GYyzHYQlLd3Zwfut9QBAJ_qfIcE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/purchase/delete-from-card/:bookId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"purchase",
+								"delete-from-card",
+								":bookId"
+							],
+							"variable": [
+								{
+									"key": "bookId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,5 +1,9 @@
-import { IsNotEmpty, IsOptional, IsString } from "class-validator"
+import { IsEnum, IsNotEmpty, IsOptional, IsString } from "class-validator"
 
+enum UserType {
+  "ADMIN",
+  "USER"
+}
 export class SignupDTO {
 
   @IsNotEmpty()
@@ -14,4 +18,7 @@ export class SignupDTO {
   @IsString()
   fullName?: string
 
+  @IsOptional()
+  @IsEnum(UserType)
+  role: "USER" | "ADMIN" = "USER"
 }
